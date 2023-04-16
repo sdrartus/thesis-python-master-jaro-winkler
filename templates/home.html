@@ -1,0 +1,51 @@
+      {% extends 'base.html' %} {% block content %}
+      <form method="post" class="buttons">
+      <!-- <br><br><br><br><br><br><br><br><br>-->
+
+          <body background="https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" style="width:auto;
+  background-size: cover;background-position: center;">
+    <div class="bordered">
+       
+            <center>
+            <img src="https://i.pinimg.com/564x/b2/f3/fb/b2f3fb1a96910b4f1368770c39674dcb.jpg" height="55" style="float:left; border-radius: 50px; margin-left: 15%; margin-bottom: 15px;">
+            <h3 style="margin-right: 15%; color: white">Enter The Chat Room</h3>
+            <center>
+        <div>
+            <input size="26" class="form-control" type="text" name="name"  placeholder="Enter Your Name" aria-label="default input example"value="{{name}}" >
+        </div><br>
+        <div class="d-grid gap-2">
+            <div class="join ">
+                <input type="text" class="form-control" placeholder="Enter a Room Code" name="code" aria-label="Enter a Room Code" aria-describedby="button-addon2" value="{{code}}" >
+                <button class="button-join" name="join" type="submit">JOIN</button>
+            </div>
+            <button type="submit" name="create" class="button-create">Create a Room</button>
+        </div>
+
+
+
+      <!--   <div class="form-check form-switch">-->
+      <!--      <input type="hidden" name="word_replacement" value="false" />-->
+      <!--      <input class="form-check-input" type="checkbox" id="word-replacement-checkbox" checked>-->
+      <!--      <label class="form-check-label" for="word-replacement-checkbox">Apply Word Replacement</label>-->
+      <!--    </div>-->
+      <!--  <script>-->
+      <!--    $(function() {-->
+      <!--  $('#word-replacement-checkbox').click(function() {-->
+      <!--    $('input[name="word_replacement"]').val($(this).is(':checked'));-->
+      <!--  });-->
+      <!--});-->
+      <!--  </script>-->
+        {% if error %}
+        <ul>
+          <li>{{error}}</li>
+        </ul>
+        {% endif %}
+      </form>
+ </div>
+      {% endblock %}
+      </body>
+      <style>
+
+      </style>
+        </html>
+        </html>

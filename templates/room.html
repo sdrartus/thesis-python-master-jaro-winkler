@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+
+<html>
+<body style="background-color: #424833">
+<div class="message-box">
+  <br>
+  <h2>Chat Room: {{code}}</h2>
+   <br>
+  <div class="messages" id="messages"></div>
+   <br>
+  <form  method="post">
+  <div class="inputs">
+    <input type="text" rows="3" placeholder="Message" name="message" id="message" value="{{mess}}"/>
+    <button style="border-color: #e7dadf; background-color:#626b4c;  color:white;" type="button" name="send" class="btn btn-success" onClick="sendMessage()">
+      Send
+    </button>
+<!--    <button type="button" name="show" id="show" class="btn btn-primary"  value="show" onClick="show()">-->
+<!--      Show Analytics-->
+<!--    </button>-->
+    <button style="border-color: #e7dadf; background-color:#bec5ad;  color:black;" type="button" name="back" id="back" class="btn btn-secondary" onClick="window.location.href='{{ url_for('home') }}'">
+      Leave Room
+    </button>
+
+  </div>
+<!--  <br><br>-->
+<!--    <div id="analytics">-->
+<!--  <h3>  Analytics Here</h3>-->
+<!--</div>-->
+</form>
+</div>
+</body>
+
+<script type="text/javascript">
+  var socketio = io();
+
+  const messages = document.getElementById("messages");
+
+  const createMessage = (name, msg) => {
+
+    const content = `
+    <div class="text">
+        <span>
+            <strong>${name}</strong>: ${msg}
+        </span>
+        <span class="muted">
+            ${new Date().toLocaleString()}
+        </span>
+    </div>
+    `;
+    messages.innerHTML += content;
+  };
+
+  socketio.on("message", (data) => {
+    createMessage(data.name, data.message);
+  });
+
+  const sendMessage = () => {
+    const message = document.getElementById("message");
+    if (message.value == "") return;
+    socketio.emit("message", { data: message.value });
+    message.value = "";
+  };
+
+  const show = () => {
+  var an = document.getElementById("analytics");
+  if (an.style.display === "none"){
+    an.style.display = "block";
+  } else {
+    an.style.display = "none";
+  }
+  };
+
+</script>
+{% for msg in messages %}
+<script type="text/javascript">
+
+  createMessage("{{msg.name}}", "{{msg.message}}");
+</script>
+{% endfor %} {% endblock %}
+</html>
