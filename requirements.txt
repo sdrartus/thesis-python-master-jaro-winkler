@@ -1,0 +1,7 @@
+Flask==2.2.3
+Flask_SocketIO==5.2.0
+jellyfish==0.11.2
+nltk==3.8.1
+processText==0.1.5
+pyjarowinkler==1.8
+simple_websocket==0.9.0
