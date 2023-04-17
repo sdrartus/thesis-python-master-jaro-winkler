@@ -51,6 +51,14 @@
     messages.innerHTML += content;
   };
 
+  document.getElementById("message").addEventListener("keydown", function (event) {
+  if (event.keyCode === 13){
+    event.preventDefault();
+    console.log();
+    sendMessage();
+  }
+  });
+
   socketio.on("message", (data) => {
     createMessage(data.name, data.message);
   });
