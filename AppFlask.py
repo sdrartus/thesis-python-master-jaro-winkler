@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
+import simple_websocket
 from string import ascii_uppercase
 from try_again import filter_profanity
 from try_again import leet_conver
