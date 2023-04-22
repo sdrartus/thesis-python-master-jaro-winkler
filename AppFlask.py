@@ -132,5 +132,5 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
-    socketio = SocketIO(app, cors_allowed_origins="*")
+    http_server = WSGIServer(("", 5000), app, handler_class=WebSocketHandler)
+    http_server.serve_forever()

@@ -2500,7 +2500,7 @@ def filter_profanity(text):
 
 
 #
-# raw_text = "I use my scissor to cut my paper"
+# raw_text = "f**cking hsh!t sh!t"
 # processed = leet_conver(raw_text)
 # clean_text = filter_profanity(processed)
 #
